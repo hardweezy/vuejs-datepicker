@@ -52,15 +52,15 @@
                   v-bind:class="dayClasses(day)"
                   @click="selectDate(day)">{{ day.date }}</span>
             </div>
-                    <!-- Legend View -->
-            <div v-if="calLegend !== undefined && calLegend.length">
-              <hr>
-                <div class="ct-legend">
-                  <span  v-for="(legend, index) in calLegend">
-                      <span class="before" v-bind:style="legend.bgc"></span>{{legend.description}}
-                    </span>
-                </div>
-            </div> 
+              <!-- Legend View -->
+              <div v-if="calLegend !== undefined && calLegend.length">
+                <hr>
+                  <div class="ct-legend">
+                    <span  v-for="(legend, index) in calLegend">
+                        <span class="before" v-bind:style="legend.bgc">{{index}}</span>{{legend.description}}
+                      </span>
+                  </div>
+              </div> 
         </div>
 
         <!-- Month View -->
@@ -83,6 +83,15 @@
                   track-by="timestamp"
                   v-bind:class="{ 'selected': month.isSelected, 'disabled': month.isDisabled }"
                   @click.stop="selectMonth(month)">{{ month.month }}</span>
+              <!-- Legend View -->
+              <div v-if="calLegend !== undefined && calLegend.length">
+                <hr>
+                  <div class="ct-legend">
+                    <span  v-for="(legend, index) in calLegend">
+                        <span class="before" v-bind:style="legend.bgc">{{index}}</span>{{legend.description}}
+                      </span>
+                  </div>
+              </div>                  
           </div>
         </template>
 
@@ -103,6 +112,15 @@
                   track-by="timestamp"
                   v-bind:class="{ 'selected': year.isSelected, 'disabled': year.isDisabled }"
                   @click.stop="selectYear(year)">{{ year.year }}</span>
+              <!-- Legend View -->
+              <div v-if="calLegend !== undefined && calLegend.length">
+                <hr>
+                  <div class="ct-legend">
+                    <span  v-for="(legend, index) in calLegend">
+                        <span class="before" v-bind:style="legend.bgc">{{index}}</span>{{legend.description}}
+                      </span>
+                  </div>
+              </div>                  
           </div>
         </template>
 
