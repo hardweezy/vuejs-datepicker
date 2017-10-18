@@ -3,8 +3,8 @@
     <div :class="{'input-group' : bootstrapStyling}">
       <!-- Calendar Button -->
       <span class="vdp-datepicker__calendar-button" :class="{'input-group-addon' : bootstrapStyling}" v-if="calendarButton" @click="showCalendar" v-bind:style="{'cursor:not-allowed;' : disabledPicker}">
-        <img :src="calendarButtonImage" width="35" height="35" v-if="calendarButtonImage && !calendarButtonIcon">
-        <i :class="calendarButtonIcon" v-else-if="calendarButtonIcon && !calendarButtonImage">
+        <img :src="calendarButtonImage" width="35" height="35" v-if="calendarButtonImage">
+        <i :class="calendarButtonIcon" v-else-if="calendarButtonIcon">
           <span v-if="!calendarButtonIcon">&nbsp;</span>
         </i>
       </span>
