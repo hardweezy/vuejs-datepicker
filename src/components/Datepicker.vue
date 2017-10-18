@@ -52,6 +52,15 @@
                   v-bind:class="dayClasses(day)"
                   @click="selectDate(day)">{{ day.date }}</span>
             </div>
+                    <!-- Legend View -->
+            <div v-if="calLegend !== undefined && calLegend.length">
+              <hr>
+                <div class="ct-legend">
+                  <span  v-for="(legend, index) in calLegend">
+                      <span class="before" v-bind:style="legend.bgc"></span>{{legend.description}}
+                    </span>
+                </div>
+            </div> 
         </div>
 
         <!-- Month View -->
@@ -96,6 +105,7 @@
                   @click.stop="selectYear(year)">{{ year.year }}</span>
           </div>
         </template>
+
   </div>
 </template>
 
@@ -140,7 +150,22 @@ export default {
     },
     disabledPicker: Boolean,
     required: Boolean,
-    dayViewOnly: Boolean
+    dayViewOnly: Boolean,
+    legend: {
+      type: Array,
+      default: function () {
+        return [{
+          description: 'Highlighted',
+          colorcode: '#cae5ed'
+        }, {
+          description: 'Disabled',
+          colorcode: '#ddd'
+        }, {
+          description: 'Selected',
+          colorcode: '#4bd'
+        }]
+      }
+    }
   },
   data () {
     return {
@@ -177,6 +202,22 @@ export default {
     }
   },
   computed: {
+    calLegend () {
+      var calLegend = []
+      if (typeof this.legend !== 'undefined' && typeof this.legend === 'object') {
+        this.legend.forEach(function (part, index) {
+          calLegend.push({
+            description: part.description,
+            bgc: {
+              backgroundColor: part.colorcode
+            }
+          })
+        })
+
+        // console.log(calLegend)
+        return calLegend
+      }
+    },
     pageDate () {
       return new Date(this.pageTimestamp)
     },
@@ -896,4 +937,31 @@ $width = 300px
     &.disabled
       color #999
       cursor default
+
+
+.ct-legend     
+        position: relative;
+        z-index: 10;
+        list-style: none;        
+        margin: 0px auto;
+        span 
+            position: relative;
+            padding-left: 23px;
+            margin-right: 10px;
+            margin-bottom: 3px;
+            cursor: pointer;
+            display: inline-block;
+            vertical-align: middle;
+            &.before 
+                height: 3.4vh;
+                position: relative;
+                left: 0;
+                content: '';
+                border: 1px solid #033660;
+                border-radius: 2px;
+                display: inline-block;
+        .ct-legend-inside 
+            position: absolute;
+            top: 0;
+            right: 0;     
 </style>
