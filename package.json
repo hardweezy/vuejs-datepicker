@@ -10,12 +10,13 @@
   ],
   "main": "dist/build.js",
   "author": "Charlie Kassel <ck@charliekassel.com>",
+  "co-author": "Solomon Omokehinde",
   "repository": {
     "type": "git",
-    "url": "https://github.com/charliekassel/vuejs-datepicker"
+    "url": "https://github.com/hardweezy/vuejs-datepicker"
   },
   "bugs": {
-    "url": "https://github.com/charliekassel/vuejs-datepicker/issues"
+    "url": "https://github.com/hardweezy/vuejs-datepicker/issues"
   },
   "private": false,
   "license": "MIT",
