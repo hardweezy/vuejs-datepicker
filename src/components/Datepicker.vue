@@ -54,6 +54,14 @@
                     v-bind:class="dayClasses(day)"
                     @click="selectDate(day)">{{ day.date }}</span>
               </div>
+            <!-- Legend View -->
+            <div v-if="calLegend !== undefined && calLegend.length">
+                <div class="ct-legend">
+                  <span  v-for="(legend, index) in calLegend">
+                      <span class="before" v-bind:style="legend.bgc"></span>{{legend.description}}
+                    </span>
+                </div>
+            </div>               
           </div>
         </template>
 
@@ -148,6 +156,21 @@ export default {
     maximumView: {
       type: String,
       default: 'year'
+    },
+    legend: {
+      type: Array,
+      default: function () {
+        return [{
+          description: 'Highlighted',
+          colorcode: '#cae5ed'
+        }, {
+          description: 'Disabled',
+          colorcode: '#ddd'
+        }, {
+          description: 'Selected',
+          colorcode: '#4bd'
+        }]
+      }
     }
   },
   data () {
@@ -924,8 +947,8 @@ $width = 300px
         display inline-block
         padding 0 5px
         width (100/7)%
-        height 40px
-        line-height 40px
+        height 30px
+        line-height 30px
         text-align center
         vertical-align middle
         border 1px solid transparent
@@ -972,19 +995,22 @@ $width = 300px
 
 .ct-legend     
         position: relative;
+        font-size 75%
         z-index: 10;
         list-style: none;        
-        margin: 0px auto;
+        margin: 5px auto;
         span 
-            position: relative;
-            padding-left: 23px;
-            margin-right: 10px;
+            position relative;
+            padding 0 10px 0 10px;
+            margin-right: 3px;
             margin-bottom: 3px;
             cursor: pointer;
             display: inline-block;
-            vertical-align: middle;
+            color: #033660;
+            text-algn center;
+            vertical-align middle;
             &.before 
-                height: 3.4vh;
+                height: 2.5vh;
                 position: relative;
                 left: 0;
                 content: '';
