@@ -1009,7 +1009,6 @@ hr.legend-divider
             margin-bottom: 3px;
             cursor: pointer;
             display: inline-block;
-            color: #033660;
             text-algn center;
             vertical-align middle;
             &.before 
