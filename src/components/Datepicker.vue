@@ -947,8 +947,8 @@ $width = 300px
         display inline-block
         padding 0 5px
         width (100/7)%
-        height 30px
-        line-height 30px
+        height 40px
+        line-height 40px
         text-align center
         vertical-align middle
         border 1px solid transparent
