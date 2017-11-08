@@ -1014,7 +1014,7 @@ $width = 300px
                 position: relative;
                 left: 0;
                 content: '';
-                border: 1px solid #033660;
+                border: 1px solid #fff;
                 border-radius: 2px;
                 display: inline-block;
         .ct-legend-inside 
