@@ -56,6 +56,7 @@
               </div>
             <!-- Legend View -->
             <div v-if="calLegend !== undefined && calLegend.length">
+              <hr class="legend-divider">
                 <div class="ct-legend">
                   <span  v-for="(legend, index) in calLegend">
                       <span class="before" v-bind:style="legend.bgc"></span>{{legend.description}}
@@ -992,7 +993,9 @@ $width = 300px
       color #999
       cursor default
 
-
+hr.legend-divider
+      margin 5px 0; 
+      padding 0
 .ct-legend     
         position: relative;
         font-size 75%
