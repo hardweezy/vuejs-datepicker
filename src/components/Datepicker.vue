@@ -917,12 +917,16 @@ $width = 300px
                 border 6px solid transparent
 
         .prev
+            &:hover:after
+                border-right 10px solid #fff
             &:after
                 border-right 10px solid #000
                 margin-left -5px
             &.disabled:after
                 border-right 10px solid #ddd
         .next
+            &:hover:after
+                border-left 10px solid #fff        
             &:after
                 border-left 10px solid #000
                 margin-left 5px
@@ -934,7 +938,8 @@ $width = 300px
         .up:not(.disabled)
             cursor pointer
             &:hover
-                background #eee
+                background #033660
+                color #fff
 
     .disabled
         color #ddd
@@ -997,11 +1002,12 @@ hr.legend-divider
       margin 5px 0; 
       padding 0
 .ct-legend     
-        position: relative;
+        position relative;
         font-size 75%
-        z-index: 10;
-        list-style: none;        
-        margin: 5px auto;
+        z-index 10;
+        list-style none;        
+        margin 5px auto;
+        float right
         span 
             position relative;
             padding 0 10px 0 10px;
