@@ -5,7 +5,19 @@
 
     <div class="example">
       <h3>Default datepicker</h3>
-      <datepicker placeholder="Select Date"></datepicker>
+      <datepicker placeholder="Select Date" wrapper-class="my-datapicker"/>
+      <code>
+          &lt;datepicker placeholder="Select Date"&gt;&lt;/datepicker&gt;
+      </code>
+    </div>
+
+    <div class="example">
+      <h3>Bootstrap styled datepicker</h3>
+      <datepicker
+        :bootstrapStyling="true"
+        :calendarButton="true"
+        :clearButton="true"
+      ></datepicker>
       <code>
           &lt;datepicker placeholder="Select Date"&gt;&lt;/datepicker&gt;
       </code>
@@ -141,6 +153,22 @@
     </div>
 
     <div class="example">
+      <h3>With default open date</h3>
+      <datepicker :open-date="openDate"></datepicker>
+      <code>
+        &lt;datepicker :disabled="disabled"&gt;&lt;/datepicker&gt;
+      </code>
+      <div class="settings">
+        <h5>Settings</h5>
+        <div class="form-group">
+          <label>Open date:</label>
+          <datepicker v-model="openDate"></datepicker>
+        </div>
+        <pre>openDate: {{ openDate }}</pre>
+      </div>
+    </div>
+
+    <div class="example">
       <h3>Translations</h3>
       <h5>{{ languages[language].language }} datepicker</h5>
 
@@ -231,6 +259,7 @@ export default {
     return {
       format: 'd MMMM yyyy',
       disabled: {},
+      openDate: null,
       disabledFn: {
         customPredictor (date) {
           if (date.getDate() % 3 === 0) {
@@ -321,6 +350,8 @@ export default {
 </script>
 
 <style>
+
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 
 body {
     font-family: 'Helvetica Neue Light', Helvetica, sans-serif;

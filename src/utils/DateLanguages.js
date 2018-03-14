@@ -1,5 +1,13 @@
 export default {
   translations: {
+    'af': {
+      'language': 'Afrikaans',
+      'months': {
+        'original': ['Januarie', 'Februarie', 'Maart', 'April', 'Mei', 'Junie', 'Julie', 'Augustus', 'September', 'Oktober', 'November', 'Desember'],
+        'abbr': ['Jan', 'Feb', 'Mrt', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des']
+      },
+      'days': ['So.', 'Ma.', 'Di.', 'Wo.', 'Do.', 'Vr.', 'Sa.']
+    },
     'ar': {
       'language': 'Arabic',
       'rtl': true,
@@ -115,6 +123,7 @@ export default {
     },
     'ja': {
       'language': 'Japanese',
+      'ymd': true,
       'months': {
         'original': ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
         'abbr': ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
@@ -132,6 +141,7 @@ export default {
     },
     'hu': {
       'language': 'Hungarian',
+      'ymd': true,
       'months': {
         'original': ['Január', 'Február', 'Március', 'Április', 'Május', 'Június', 'Július', 'Augusztus', 'Szeptember', 'Október', 'November', 'December'],
         'abbr': ['Jan', 'Febr', 'Márc', 'Ápr', 'Máj', 'Jún', 'Júl', 'Aug', 'Szept', 'Okt', 'Nov', 'Dec']
@@ -180,14 +190,24 @@ export default {
     },
     'ko': {
       'language': 'Korean',
+      'ymd': true,
       'months': {
         'original': ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
         'abbr': ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
       },
       'days': ['일', '월', '화', '수', '목', '금', '토']
     },
+    'lb': {
+      'language': 'Luxembourgish',
+      'months': {
+        'original': ['Januar', 'Februar', 'Mäerz', 'Abrëll', 'Mäi', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+        'abbr': ['Jan', 'Feb', 'Mäe', 'Abr', 'Mäi', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez']
+      },
+      'days': ['So.', 'Mé.', 'Dë.', 'Më.', 'Do.', 'Fr.', 'Sa.']
+    },
     'lt': {
       'language': 'Lithuanian',
+      'ymd': true,
       'months': {
         'original': ['Sausis', 'Vasaris', 'Kovas', 'Balandis', 'Gegužė', 'Birželis', 'Liepa', 'Rugpjūtis', 'Rugsėjis', 'Spalis', 'Lapkritis', 'Gruodis'],
         'abbr': ['Sau', 'Vas', 'Kov', 'Bal', 'Geg', 'Bir', 'Lie', 'Rugp', 'Rugs', 'Spa', 'Lap', 'Gru']
@@ -204,6 +224,7 @@ export default {
     },
     'mn': {
       'language': 'Mongolia',
+      'ymd': true,
       'months': {
         'original': ['1 дүгээр сар', '2 дугаар сар', '3 дугаар сар', '4 дүгээр сар', '5 дугаар сар', '6 дугаар сар', '7 дугаар сар', '8 дугаар сар', '9 дүгээр сар', '10 дугаар сар', '11 дүгээр сар', '12 дугаар сар'],
         'abbr': ['1-р сар', '2-р сар', '3-р сар', '4-р сар', '5-р сар', '6-р сар', '7-р сар', '8-р сар', '9-р сар', '10-р сар', '11-р сар', '12-р сар']
@@ -323,6 +344,15 @@ export default {
       },
       'days': ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
     },
+    'ur': {
+      'language': 'Urdu',
+      'rtl': true,
+      'months': {
+        'original': ['جنوری', 'فروری', 'مارچ', 'اپریل', 'مئی', 'جون', 'جولائی', 'اگست', 'سپتمبر', 'اکتوبر', 'نومبر', 'دسمبر'],
+        'abbr': ['جنوری', 'فروری', 'مارچ', 'اپریل', 'مئی', 'جون', 'جولائی', 'اگست', 'سپتمبر', 'اکتوبر', 'نومبر', 'دسمبر']
+      },
+      'days': ['اتوار', 'پیر', 'منگل', 'بدھ', 'جمعرات', 'جمعہ', 'ہفتہ']
+    },
     'vi': {
       'language': 'Vientnamese',
       'months': {
@@ -333,6 +363,7 @@ export default {
     },
     'zh': {
       'language': 'Chinese',
+      'ymd': true,
       'months': {
         'original': ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
         'abbr': ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']

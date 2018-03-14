@@ -1,6 +1,9 @@
 # Datepicker
 
-![](https://travis-ci.org/charliekassel/vuejs-datepicker.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/charliekassel/vuejs-datepicker/badge.svg?branch=master)](https://coveralls.io/github/charliekassel/vuejs-datepicker?branch=master)
+[![Travis Build](https://img.shields.io/travis/charliekassel/vuejs-datepicker.svg)](https://travis-ci.org/charliekassel/vuejs-datepicker)
+[![Version](https://img.shields.io/npm/v/vuejs-datepicker.svg)](https://www.npmjs.com/package/vuejs-datepicker)
+[![Coveralls github](https://img.shields.io/coveralls/github/charliekassel/vuejs-datepicker.svg)](https://coveralls.io/github/charliekassel/vuejs-datepicker?branch=master)
+[![Downloads](https://img.shields.io/npm/dm/vuejs-datepicker.svg)](https://www.npmjs.com/package/vuejs-datepicker)
 
 A datepicker Vue component. Compatible with Vue 2.x
 
@@ -8,9 +11,10 @@ NB. Vue 1.x was supported up to version v0.9.9. If you want to use this componen
 
 ## Demo
 
-Demo is broken :(
-To view examples clone the repo and run `npm install && npm run dev`
-https://www.webpackbin.com/bins/-KhQbtTSVuU6r8VCrIdC - not currently working.
+To view a demo online:
+https://codesandbox.io/s/mpklq49wp
+
+To view demo examples locally clone the repo and run `npm install && npm run dev`
 
 ## Install
 
@@ -20,11 +24,13 @@ $ npm install vuejs-datepicker --save
 ``` javascript
 import Datepicker from 'vuejs-datepicker';
 
-Vue.component('my-component', {
-    components: {
-        Datepicker
-    }
-});
+export default {
+  // ...
+  components: {
+      Datepicker
+  }
+  // ...
+}
 ```
 
 
@@ -39,7 +45,7 @@ Vue.component('my-component', {
 ``` html
 <script>
 var state = {
-    date: new Date(2016, 9,  16)
+  date: new Date(2016, 9,  16)
 }
 </script>
 <datepicker :value="state.date"></datepicker>
@@ -54,7 +60,7 @@ Use `v-model` for two-way binding
 ```
 Emits events
 ``` html
-<datepicker v-on:selected="doSomethingInParentComponentFunction" v-on:opened="datepickerOpenedFunction" v-on:closed="datepickerClosedFunction">
+<datepicker @selected="doSomethingInParentComponentFunction" @opened="datepickerOpenedFunction" @closed="datepickerClosedFunction">
 ```
 Inline always open version
 ``` html
@@ -62,31 +68,34 @@ Inline always open version
 ```
 ## Available props
 
-| Prop                  | Type            | Default     | Description                              |
-|-----------------------|-----------------|-------------|------------------------------------------|
-| value                 | Date\|String    |             | Date value of the datepicker             |
-| name                  | String          |             | Input name property                      |
-| id                    | String          |             | Input id                                 |
-| format                | String\|Function| dd MMM yyyy | Date formatting string or function       |
-| full-month-name       | Boolean         | false       | To show the full month name              |
-| language              | String          | en          | Translation for days and months          |
-| disabled              | Object          |             | See below for configuration              |
-| placeholder           | String          |             | Input placeholder text                   |
-| inline                | Boolean         |             | To show the datepicker always open       |
-| calendar-class        | String\|Object  |             | CSS class applied to the calendar el     |
-| input-class           | String\|Object  |             | CSS class applied to the input el        |
-| wrapper-class         | String\|Object  |             | CSS class applied to the outer div       |
-| monday-first          | Boolean         | false       | To start the week on Monday              |
-| clear-button          | Boolean         | false       | Show an icon for clearing the date       |
-| clear-button-icon     | String          |             | Use icon for button (ex: fa fa-times)    |
-| calendar-button       | Boolean         | false       | Show an icon that that can be clicked    |
-| calendar-button-icon  | String          |             | Use icon for button (ex: fa fa-calendar) |
-| bootstrapStyling      | Boolean         | false       | Output bootstrap styling classes         |
-| initial-view          | String          | minimumView | If set, open on that view                |
-| disabled-picker       | Boolean         | false       | If true, disable Datepicker on screen    |
-| required              | Boolean         | false       | Sets html required attribute on input    |
-| minimum-view          | String          | 'day'       | If set, lower-level views won't show     |
-| maximum-view          | String          | 'year'      | If set, higher-level views won't show    |
+| Prop                          | Type            | Default     | Description                              |
+|-------------------------------|-----------------|-------------|------------------------------------------|
+| value                         | Date\|String    |             | Date value of the datepicker             |
+| name                          | String          |             | Input name property                      |
+| id                            | String          |             | Input id                                 |
+| format                        | String\|Function| dd MMM yyyy | Date formatting string or function       |
+| full-month-name               | Boolean         | false       | To show the full month name              |
+| language                      | String          | en          | Translation for days and months          |
+| disabled                      | Object          |             | See below for configuration              |
+| placeholder                   | String          |             | Input placeholder text                   |
+| inline                        | Boolean         |             | To show the datepicker always open       |
+| calendar-class                | String\|Object  |             | CSS class applied to the calendar el     |
+| input-class                   | String\|Object  |             | CSS class applied to the input el        |
+| wrapper-class                 | String\|Object  |             | CSS class applied to the outer div       |
+| monday-first                  | Boolean         | false       | To start the week on Monday              |
+| clear-button                  | Boolean         | false       | Show an icon for clearing the date       |
+| clear-button-icon             | String          |             | Use icon for button (ex: fa fa-times)    |
+| calendar-button               | Boolean         | false       | Show an icon that that can be clicked    |
+| calendar-button-icon          | String          |             | Use icon for button (ex: fa fa-calendar) |
+| calendar-button-icon-content  | String          |             | Use for material-icons (ex: event)       |
+| bootstrap-styling             | Boolean         | false       | Output bootstrap styling classes         |
+| initial-view                  | String          | minimumView | If set, open on that view                |
+| disabled-picker               | Boolean         | false       | If true, disable Datepicker on screen    |
+| required                      | Boolean         | false       | Sets html required attribute on input    |
+| open-date                     | Date\|String    |             | If set, open on that date                |
+| minimum-view                  | String          | 'day'       | If set, lower-level views won't show     |
+| maximum-view                  | String          | 'year'      | If set, higher-level views won't show    |
+
 
 ## Events
 
@@ -142,72 +151,75 @@ This allow us to use moment, date-fns, globalize or any other library to format 
 ```
 
 ## Disabled Dates
-Dates can disabled in a number of ways.
+Dates can be disabled in a number of ways.
 
 ``` html
 <script>
 var state = {
-    disabled: {
-        to: new Date(2016, 0, 5), // Disable all dates up to specific date
-        from: new Date(2016, 0, 26), // Disable all dates after specific date
-        days: [6, 0], // Disable Saturday's and Sunday's
-        daysOfMonth: [29, 30, 31], // Disable 29th, 30th and 31st of each month
-        dates: [ // Disable an array of dates
-            new Date(2016, 9, 16),
-            new Date(2016, 9, 17),
-            new Date(2016, 9, 18)
-        ],
-        ranges: [{ // Disable dates in given ranges (exclusive).
-            from: new Date(2016, 11, 25),
-            to: new Date(2016, 11, 30)
-        }, {
-            from: new Date(2017, 1, 12),
-            to: new Date(2017, 2, 25)
-        }],
-        // a custom function that returns true if the date is disabled
-        // this can be used for wiring you own logic to disable a date if none
-        // of the above conditions serve your purpose
-        // this function should accept a date and return true if is disabled
-        customPredictor: function(date) {
-          // disables the date if it is a multiple of 5
-          if(date.getDate() % 5 == 0){
-            return true
-          }
-        }
+  disabled: {
+    to: new Date(2016, 0, 5), // Disable all dates up to specific date
+    from: new Date(2016, 0, 26), // Disable all dates after specific date
+    days: [6, 0], // Disable Saturday's and Sunday's
+    daysOfMonth: [29, 30, 31], // Disable 29th, 30th and 31st of each month
+    dates: [ // Disable an array of dates
+      new Date(2016, 9, 16),
+      new Date(2016, 9, 17),
+      new Date(2016, 9, 18)
+    ],
+    ranges: [{ // Disable dates in given ranges (exclusive).
+      from: new Date(2016, 11, 25),
+      to: new Date(2016, 11, 30)
+    }, {
+      from: new Date(2017, 1, 12),
+      to: new Date(2017, 2, 25)
+    }],
+    // a custom function that returns true if the date is disabled
+    // this can be used for wiring you own logic to disable a date if none
+    // of the above conditions serve your purpose
+    // this function should accept a date and return true if is disabled
+    customPredictor: function(date) {
+      // disables the date if it is a multiple of 5
+      if(date.getDate() % 5 == 0){
+        return true
+      }
     }
+  }
 }
 </script>
 <datepicker :disabled="state.disabled"></datepicker>
 ```
 
 ## Highlight Dates
-Dates can be highlighted (e.g. for marking an appointment) in a number of ways. Important: You can only highlight dates, that aren't disabled.
-Note: Both `to` and `from` properties are require to define a range of dates to highlight
+Dates can be highlighted (e.g. for marking an appointment) in a number of ways. Important:
+By default disabled dates are ignored, to highlight disabled dates set the `includeDisabled`
+property to `true`. Note: Both `to` and `from` properties are required to define a range of
+dates to highlight.
 
 ``` html
 <script>
 var state = {
-    highlighted: {
-        to: new Date(2016, 0, 5), // Highlight all dates up to specific date
-        from: new Date(2016, 0, 26), // Highlight all dates after specific date
-        days: [6, 0], // Highlight Saturday's and Sunday's
-        daysOfMonth: [15, 20, 31], // Highlight 15th, 20th and 31st of each month
-        dates: [ // Highlight an array of dates
-            new Date(2016, 9, 16),
-            new Date(2016, 9, 17),
-            new Date(2016, 9, 18)
-        ],
-        // a custom function that returns true of the date is highlighted
-        // this can be used for wiring you own logic to highlight a date if none
-        // of the above conditions serve your purpose
-        // this function should accept a date and return true if is highlighted
-        customPredictor: function(date) {
-          // highlights the date if it is a multiple of 4
-          if(date.getDate() % 4 == 0){
-            return true
-          }
-        }
-    }
+  highlighted: {
+    to: new Date(2016, 0, 5), // Highlight all dates up to specific date
+    from: new Date(2016, 0, 26), // Highlight all dates after specific date
+    days: [6, 0], // Highlight Saturday's and Sunday's
+    daysOfMonth: [15, 20, 31], // Highlight 15th, 20th and 31st of each month
+    dates: [ // Highlight an array of dates
+      new Date(2016, 9, 16),
+      new Date(2016, 9, 17),
+      new Date(2016, 9, 18)
+    ],
+    // a custom function that returns true of the date is highlighted
+    // this can be used for wiring you own logic to highlight a date if none
+    // of the above conditions serve your purpose
+    // this function should accept a date and return true if is highlighted
+    customPredictor: function(date) {
+      // highlights the date if it is a multiple of 4
+      if(date.getDate() % 4 == 0){
+        return true
+      }
+    },
+    includeDisabled: true // Highlight disabled dates
+  }
 }
 </script>
 <datepicker :highlighted="state.highlighted"></datepicker>
@@ -229,6 +241,7 @@ Available languages
 
 | Abbr        | Language         |          |
 | ----------- |------------------|----------|
+| af          | Afrikaans        |          |
 | ar          | Arabic           |          |
 | bg          | Bulgarian        |          |
 | bs          | Bosnian          |          |
@@ -252,6 +265,7 @@ Available languages
 | it          | Italian          |          |
 | ja          | Japanese         |          |
 | ko          | Korean           |          |
+| lb          | Luxembourgish    |          |
 | lt          | Lithuanian       |          |
 | lv          | Latvian          |          |
 | mn          | Mongolian        |          |
@@ -269,5 +283,6 @@ Available languages
 | th          | Thai             |          |
 | tr          | Turkish          |          |
 | uk          | Ukrainian        |          |
+| ur          | Urdu             |          |
 | vi          | Vietnamese       |          |
 | zh          | Chinese          |          |

@@ -15,7 +15,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     })
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
-  entry: '@/components/Datepicker.vue',
+  entry: './src/components/Datepicker.vue',
   externals: {
     vue: 'vue'
   },
@@ -34,7 +34,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       compress: {
         warnings: false
       },
-      sourceMap: true
+      sourceMap: config.build.productionSourceMap
     })
   ]
 })

@@ -212,14 +212,14 @@ describe('Datepicker.vue', () => {
     const date = new Date(2016, 9, 9)
     vm.selectDate({timestamp: date.getTime()})
     vm.nextDecade()
-    expect(vm.getPageDecade()).to.equal('2020\'s')
+    expect(vm.getPageDecade()).to.equal('2020 - 2029')
   })
 
   it('can set the previous decade', () => {
     const date = new Date(2016, 9, 9)
     vm.selectDate({timestamp: date.getTime()})
     vm.previousDecade()
-    expect(vm.getPageDecade()).to.equal('2000\'s')
+    expect(vm.getPageDecade()).to.equal('2000 - 2009')
   })
 
   it('should reset to default date', () => {
@@ -254,6 +254,18 @@ describe('Datepicker.vue set by string', () => {
     })
     await vm.$nextTick(() => {
       expect(vm.$el.querySelector('input').value).to.equal('')
+    })
+  })
+})
+
+describe('Datepicker.vue set by timestamp', () => {
+  it('can parse unix timestamp', async () => {
+    vm = getViewModel(Datepicker, {
+      format: 'yyyy MM dd',
+      value: 1517194697668
+    })
+    await vm.$nextTick(() => {
+      expect(vm.$el.querySelector('input').value).to.equal('2018 01 29')
     })
   })
 })
@@ -486,6 +498,20 @@ describe('Datepicker highlight date', () => {
     expect(vm.isHighlightedDate(new Date(2016, 12, 5))).to.equal(false)
   })
 
+  it('should highlight a disabled date when explicitly configured to', () => {
+    vm = getViewModel(Datepicker, {
+      highlighted: {
+        to: new Date(2016, 12, 8),
+        from: new Date(2016, 12, 4),
+        includeDisabled: true
+      },
+      disabled: {
+        dates: [ new Date(2016, 12, 5) ]
+      }
+    })
+    expect(vm.isHighlightedDate(new Date(2016, 12, 5))).to.equal(true)
+  })
+
   it('should highlight a date before the to property', () => {
     expect(vm.isHighlightedDate(new Date(2016, 12, 7))).to.equal(true)
   })
@@ -625,6 +651,44 @@ describe('Datepicker with initial-view', () => {
     expect(vm.showDayView).to.equal(false)
     expect(vm.showMonthView).to.equal(false)
     expect(vm.showYearView).to.equal(true)
+  })
+})
+
+describe('Datepicker with open date', () => {
+  const openDate = new Date(2016, 9, 12)
+
+  beforeEach(() => {
+    vm = getViewModel(Datepicker, {
+      openDate: openDate
+    })
+  })
+
+  it('should be set to november', () => {
+    expect(vm.getPageMonth()).to.equal(9)
+    expect(vm.getPageYear()).to.equal(2016)
+  })
+
+  it('should set pageTimestamp to be first day of open date\'s month', () => {
+    const d = new Date(vm.pageTimestamp)
+    expect(vm.openDate.getTime()).to.equal(openDate.getTime())
+    vm.setPageDate()
+    expect(d.getFullYear()).to.equal(openDate.getFullYear())
+    expect(d.getMonth()).to.equal(openDate.getMonth())
+    expect(d.getDate()).to.equal(1)
+  })
+
+  it('should open with selected date if one is set', () => {
+    const newDate = new Date(2018, 10, 9)
+    vm.selectDate({timestamp: newDate.getTime()})
+    expect(vm.getPageMonth()).to.equal(10)
+    expect(vm.getPageYear()).to.equal(2018)
+  })
+
+  it('should show today\'s date if no open date is set', () => {
+    vm = getViewModel(Datepicker, {})
+    const today = new Date()
+    expect(vm.getPageMonth()).to.equal(today.getMonth())
+    expect(vm.getPageYear()).to.equal(today.getFullYear())
   })
 })
 
